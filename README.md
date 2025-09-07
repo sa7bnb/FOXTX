@@ -139,7 +139,7 @@ Both the Wemos D1 Mini Pro and CC1101 module can be purchased inexpensively from
 - **Band**: Primarily 70cm amateur radio band (433 MHz)
 
 ### Power Requirements
-- **Input Voltage**: 5V USB or 3.3-5V DC
+- **Input Voltage**: 5V DC
 - **Current Consumption**: ~100-200mA during transmission
 - **Standby Current**: ~50mA
 
