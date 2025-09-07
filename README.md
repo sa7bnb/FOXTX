@@ -2,19 +2,18 @@
 
 **Designed and developed by SA7BNB**
 
-A compact, web-controlled Morse code transmitter perfect for fox hunting, amateur radio events, and educational purposes. Built using affordable components from AliExpress.
+A compact, web-controlled CW Morse code transmitter perfect for fox hunting, amateur radio events, and educational purposes. Built using affordable components from AliExpress.
 
 
 ## Overview
 
-The Fox Transmitter is a WiFi-controlled Morse code transmitter that operates on the 433MHz amateur radio band. It features a web-based interface for easy configuration and control, making it ideal for remote operation during fox hunting activities or as an automated beacon.
+The Fox Transmitter is a WiFi-controlled CW Morse code transmitter that operates on the 433MHz amateur radio band. It features a web-based interface for easy configuration and control, making it ideal for remote operation during fox hunting activities or as an automated beacon.
 
 ## Hardware Requirements
 
 ### Main Components
 - **Wemos D1 Mini Pro** (ESP8266-based development board) - Available on AliExpress
 - **CC1101 RF Module** (433MHz transceiver) - Available on AliExpress
-- **LED** (5mm, any color) with 220-470Ω resistor
 
 ### Component Sources
 Both the Wemos D1 Mini Pro and CC1101 module can be purchased inexpensively from AliExpress, making this an affordable project for amateur radio operators worldwide.
