@@ -16,8 +16,6 @@ The Fox Transmitter is a WiFi-controlled Morse code transmitter that operates on
 - **Wemos D1 Mini Pro** (ESP8266-based development board) - Available on AliExpress
 - **CC1101 RF Module** (433MHz transceiver) - Available on AliExpress
 - **LED** (5mm, any color) with 220-470Ω resistor
-- **Breadboard or PCB** for connections
-- **Jumper wires**
 
 ### Component Sources
 Both the Wemos D1 Mini Pro and CC1101 module can be purchased inexpensively from AliExpress, making this an affordable project for amateur radio operators worldwide.
@@ -43,10 +41,17 @@ Both the Wemos D1 Mini Pro and CC1101 module can be purchased inexpensively from
 | Anode (+) | D1 via 220Ω resistor | Morse code indicator |
 | Cathode (-) | GND | Ground |
 
+### Power Amplifier Control
+
+| Connection | Wemos D1 Mini Pro | Description |
+|------------|------------------|-------------|
+| PA Relay Control | D0 (GPIO16) | External power amplifier relay control |
+
 ### Important Notes
 - **Use 3.3V only** for the CC1101 module - 5V will damage it
 - Ensure solid connections for reliable SPI communication
 - Keep wiring as short as possible to minimize interference
+- **PA Control Warning**: D0 (GPIO16) goes HIGH during ESP8266 programming - ensure your external amplifier and relay circuit can handle this safely
 
 ## Software Installation
 
@@ -91,11 +96,11 @@ Both the Wemos D1 Mini Pro and CC1101 module can be purchased inexpensively from
   - ±1 kHz, ±100 Hz, ±10 Hz, ±1 Hz steps
 - **EEPROM Storage**: All settings automatically saved and restored
 - **LED Indicator**: Visual feedback of transmission activity
+- **Automatic PA Control**: External power amplifier automatically activated 1 second before transmission and deactivated 1 second after
 
 ### LED Status Indicators
 - **Off**: Inactive/standby
 - **Morse Pattern**: Flashes in sync with transmitted Morse code
-- **Slow Blink (0.5s)**: Carrier test mode active
 
 ## Features
 
@@ -104,6 +109,7 @@ Both the Wemos D1 Mini Pro and CC1101 module can be purchased inexpensively from
 - Persistent settings storage in EEPROM
 - Automatic startup with saved configuration
 - No manual intervention required after setup
+- **Integrated PA Control**: Seamless external amplifier switching with proper timing
 
 ### Web-Based Control
 - Mobile-friendly responsive interface
@@ -127,7 +133,8 @@ Both the Wemos D1 Mini Pro and CC1101 module can be purchased inexpensively from
 
 ### RF Performance
 - **Frequency Range**: 400-500 MHz
-- **Output Power**: 12 dBm (≈16 mW) maximum
+- **Output Power**: 12 dBm (≈16 mW) maximum (CC1101 module)
+- **External PA Support**: Relay control for external power amplifiers
 - **Modulation**: OOK (On-Off Keying)
 - **Frequency Resolution**: 1 Hz steps
 - **Band**: Primarily 70cm amateur radio band (433 MHz)
@@ -142,6 +149,7 @@ Both the Wemos D1 Mini Pro and CC1101 module can be purchased inexpensively from
 - **Message Length**: Up to 100 characters
 - **Transmission Interval**: 0.01 minutes to unlimited
 - **Memory**: Non-volatile EEPROM storage
+- **PA Timing**: 1-second pre/post transmission delays
 
 ## Usage Examples
 
@@ -149,13 +157,15 @@ Both the Wemos D1 Mini Pro and CC1101 module can be purchased inexpensively from
 1. Set frequency to agreed hunting frequency (e.g., 433.920 MHz)
 2. Configure message: "FOX FOX DE [YOURCALL] K"
 3. Set interval to 60 seconds
-4. Deploy transmitter in field and start transmission
+4. Connect external amplifier to D0 relay control if needed
+5. Deploy transmitter in field and start transmission
 
 ### Beacon Operation
 1. Configure location-specific message
 2. Set longer interval (5-10 minutes)
 3. Use carrier test to precisely adjust frequency
-4. Start automatic operation
+4. Connect external amplifier for increased range
+5. Start automatic operation
 
 ### Educational Demonstrations
 1. Use short dit length for clear demonstration
@@ -176,6 +186,7 @@ Both the Wemos D1 Mini Pro and CC1101 module can be purchased inexpensively from
 - Verify CC1101 wiring, especially power (3.3V only)
 - Check SPI connections (CSN, SCK, MOSI, MISO)
 - Ensure frequency is within amateur radio privileges
+- Check external PA relay and connections if used
 
 #### Settings Not Saved
 - Check EEPROM functionality in serial monitor
@@ -188,11 +199,17 @@ Both the Wemos D1 Mini Pro and CC1101 module can be purchased inexpensively from
 - Check IP address: 192.168.4.1
 - Manual page refresh if status seems outdated
 
+#### PA Control Issues
+- Verify D0 connection to relay circuit
+- **Remember**: D0 goes HIGH during programming
+- Check relay specifications and power requirements
+
 ### Serial Monitor Debugging
 Connect via USB and monitor at 115200 baud for detailed status information including:
 - EEPROM operations
 - WiFi connection status
 - Transmission activity
+- PA control status
 - Error messages
 
 ## Legal Considerations
@@ -238,4 +255,4 @@ This project is open source and available for amateur radio operators worldwide.
 
 **73, SA7BNB**
 
-*Amateur Radio - Experimenting with Electronics Since [Year]*
+*Amateur Radio - Experimenting with Electronics Since 1994*
