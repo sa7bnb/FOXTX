@@ -167,12 +167,6 @@ Both the Wemos D1 Mini Pro and CC1101 module can be purchased inexpensively from
 4. Connect external amplifier for increased range
 5. Start automatic operation
 
-### Educational Demonstrations
-1. Use short dit length for clear demonstration
-2. Set simple messages like "CQ CQ TEST"
-3. Use test transmission for single demonstrations
-4. LED provides visual morse code learning aid
-
 ## Troubleshooting
 
 ### Common Issues
